@@ -1,0 +1,3 @@
+[submodule "dependencys/PDFsharp"]
+	path = dependencys/PDFsharp
+	url = https://github.com/LokiMidgard/PDFsharp.git

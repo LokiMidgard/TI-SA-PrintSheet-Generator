@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>TI.SA.PrintSheet</RootNamespace>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>preview</LangVersion>
+		<EnablePreviewFeatures>true</EnablePreviewFeatures>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!--<PackageReference Include="PdfSharp" Version="1.50.5147" />-->
+		<PackageReference Include="SharpCompress" Version="0.30.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\dependencys\PDFsharp\src\PdfSharp\PdfSharp.csproj" />
+	</ItemGroup>
+
+
+</Project>
