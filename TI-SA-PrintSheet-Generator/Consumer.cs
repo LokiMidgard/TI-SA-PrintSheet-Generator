@@ -219,6 +219,10 @@ public enum ImageFormat
     Images,
     MultiImages
 }
+public enum BackIndex
+{
+    After
+}
 
 public class FileParameter : ConsumerBase, IConsumer<FileParameter>
 {
@@ -250,7 +254,12 @@ public class FileParameter : ConsumerBase, IConsumer<FileParameter>
         {
             case ImageFormat.Pdf:
                 if (!Consume<int>(ref input, out var backIndex))
-                    backIndex = 0;
+                {
+                    if (Consume<BackIndex>(ref input, out var after))
+                        backIndex = -1;
+                    else
+                        backIndex = 0;
+                }
 
                 return new FileParameter(() =>
                 {
@@ -310,19 +319,25 @@ public class FileParameter : ConsumerBase, IConsumer<FileParameter>
             if (i == backIndex + 1)
                 continue;
             form.PageNumber = i;
+            if (backIndex == -1)
+            {
+                // Hac to have every card have its own back after itself
+                back.PageNumber = i + 1;
+                i++;
+            }
             yield return (form, back);
         }
     }
 
     protected private static IEnumerable<(XImage front, XImage back)> GetCardsFromFiles(ReadOnlyMemory<string> pathes)
     {
-        //var back = @"C:\Users\patri\source\repos\TI-SA-PrintSheet-Generator\TI-SA-PrintSheet-Generator\Images/Backs/AC_BACK copy.jpg";
 
         var backPath = pathes.Span[0];
         var rest = pathes[1..];
 
 
         using XImage back = XImage.FromFile(backPath);
+        
 
         for (int i = 0; i < rest.Length; i++)
         {

@@ -70,6 +70,8 @@ internal class Printer
         // Create a temporary file
         string filename = String.Format("{0}_tempfile.pdf", Guid.NewGuid().ToString("D").ToUpper());
         var s_document = new PdfDocument();
+        // does this make a diference?
+        //s_document.Options.ColorMode = PdfColorMode.Cmyk;
         s_document.Info.Title = "Shatterd Accension - Cards";
         s_document.Info.Author = "layouted by tool";
         s_document.Info.Subject = "A collection of all Cards of Shatterd ascenceion";
@@ -113,12 +115,12 @@ internal class Printer
                 AddPage(s_document, ref front, ref back, ref gfxFront, ref gfxBack, out cardsPerRow, out cardsPerColumn, out marginLeft, out marginTop, out printedWidth, out printedHeight);
             printImage(currentX, currentY, card.front, card.back);
             currentX++;
-            if (currentX >= cardsPerRow)
+            if (currentX >= cardsPerColumn)
             {
                 currentX = 0;
                 currentY++;
             }
-            if (currentY >= cardsPerColumn)
+            if (currentY >= cardsPerRow)
             {
                 currentY = 0;
 
@@ -216,16 +218,16 @@ internal class Printer
         front.Orientation = back.Orientation = orientation;
 
 
-        cardsPerRow = (int)(front.Width.Millimeter - GAP) / (GAP + WIDTH);
-        cardsPerColumn = (int)(front.Height.Millimeter - GAP) / (GAP + HEIGHT);
+        cardsPerColumn  = (int)(front.Width.Millimeter - GAP) / (GAP + WIDTH);
+        cardsPerRow = (int)(front.Height.Millimeter - GAP) / (GAP + HEIGHT);
 
         if (cardsPerColumn == 0)
             cardsPerColumn = 1;
         if (cardsPerRow == 0)
             cardsPerRow = 1;
 
-        printedWidth = cardsPerRow * (WIDTH + GAP) + GAP;
-        printedHeight = cardsPerColumn * (HEIGHT + GAP) + GAP;
+        printedWidth =cardsPerColumn  * (WIDTH + GAP) + GAP;
+        printedHeight =  cardsPerRow* (HEIGHT + GAP) + GAP;
 
         marginLeft = (front.Width.Millimeter - printedWidth) / 2;
         marginTop = (front.Height.Millimeter - printedHeight) / 2;

@@ -1,12 +1,20 @@
 {
   "profiles": {
-    "TI-SA-PrintSheet-Generator": {
-      "commandName": "Project",
-      "commandLineArgs": "-zip pdf \"C:\\Users\\patri\\Downloads\\Objectives_PDF.rar\" -zip images \"C:\\Users\\patri\\Downloads\\SA_PoliticalDeckRevised&ExpandedJPG.rar\" BACK -zip images \"C:\\Users\\patri\\Downloads\\SA_ActionDeckRevised&ExpandedJPG (1).rar\" BACK -dir multiimages C:\\Users\\patri\\Downloads\\specialCards 1 2 1"
-    },
     "RaceSheets": {
       "commandName": "Project",
       "commandLineArgs": "-file pdf \"C:\\Users\\patri\\Downloads\\RaceSheets.pdf\" -size 279 165 -bleed back -landscape -gap 8"
+    },
+    "StrategyCards": {
+      "commandName": "Project",
+      "commandLineArgs": "-file pdf \"C:/Users/patri/Downloads/strategyCards/StrategyCards.pdf\" after -size 70 82  -landscape   -gap 0"
+    },
+    "Profile 1": {
+      "commandName": "Project",
+      "commandLineArgs": "-zip pdf \"C:\\Users\\patri\\Downloads\\Objectives_PDF.rar\" -zip images \"C:\\Users\\patri\\Downloads\\SA_PoliticalDeckRevised&ExpandedJPG.rar\" BACK -zip images \"C:\\Users\\patri\\Downloads\\SA_ActionDeckRevised&ExpandedJPG (1).rar\" BACK -dir multiimages C:\\Users\\patri\\Downloads\\specialCards 1 2 1"
+    },
+    "SmallCards": {
+      "commandName": "Project",
+      "commandLineArgs": "-zip pdf \"C:\\Users\\patri\\Downloads\\Objectives_PDF.rar\" -zip images \"C:\\Users\\patri\\Downloads\\SA_PoliticalDeckRevised&ExpandedJPG.rar\" BACK -zip images \"C:\\Users\\patri\\Downloads\\SA_ActionDeckRevised&ExpandedJPG (1).rar\" BACK -dir multiimages C:\\Users\\patri\\Downloads\\specialCards 1 2 1"
     }
   }
 }
