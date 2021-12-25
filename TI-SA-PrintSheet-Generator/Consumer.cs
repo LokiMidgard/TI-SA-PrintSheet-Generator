@@ -337,7 +337,7 @@ public class FileParameter : ConsumerBase, IConsumer<FileParameter>
 
 
         using XImage back = XImage.FromFile(backPath);
-        
+
 
         for (int i = 0; i < rest.Length; i++)
         {
@@ -691,11 +691,13 @@ public class LandscapeParameter : ConsumerBase, IConsumer<LandscapeParameter>
 }
 
 
+[Flags]
 public enum Bleed
 {
     None,
     Front = 1,
     Back = 2,
+    Both = 3,
 }
 
 public class BleedParameter : ConsumerBase, IConsumer<BleedParameter>
