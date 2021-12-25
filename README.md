@@ -26,22 +26,37 @@ You can use multiple files, folders and zips in one execution.
 There are three formats that are supported
 
 - **Singel Fle**  
-  A series of files each file is a card. The first image will be the back of the cards. So you need at least two files
+  A series of files each file is a card. The first image will be the back of the cards. So you need at least two files.
   ```
-    <path to back side>  <path to front> [...<path to front>]
+    images <path to back side>  <path to front> [...<path to front>]
   ```
+  If this format is used with dir or zip where already multiple files are read instead provide the name of the back
+  side file. You can use a substring of the name as long as it matches only one file.
+  ```
+    images <path>  <back side name>
+  ```
+
+  backSearchPattern
 - **Multi Image files**  
   An image that contains all files in a grid. in addition to the path you need the images per row and the images per column.
   Optionally you can set the index of the back side (`0` is the default).
   ```
-    <path> <images per row> <images per column> [<index of the back side>]
+    multiimages <path> <images per row> <images per column> [<index of the back side>]
   ``` 
 - **PDF**  
   An PDF where every page is one card. Optionally you can set the index of the back side (`0` is the default). 
   Instead of an index you can set `after` in that case after every card comes its back side.
   ```
-    <path to pdf> [<index of the back side>|after]
+    pdf <path to pdf> [<index of the back side>|after]
   ``` 
+
+  **Example**
+  
+  ```bash
+  ti-sa-printsheet-generator -file images ./deck1/back.png ./deck1/card1.png ./deck1/card2.png -zip pdf strategys.zip after
+  ```
+
+  This will make two cards from the folder deck1 using back.png as the background and all pdfs from strategys.zip.
   
 ## Additional parameters
 
